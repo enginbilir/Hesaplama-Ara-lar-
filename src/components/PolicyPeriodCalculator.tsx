@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import type { PolicyPeriodResult } from '@/types';
-import { useTurkishNumberFormat } from '@/hooks/useTurkishNumberFormat';
-import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon';
+import type { PolicyPeriodResult } from '../types';
+import { useTurkishNumberFormat } from '../hooks/useTurkishNumberFormat';
+import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 
 interface PolicyPeriodCalculatorProps {
   onBack: () => void;

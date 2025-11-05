@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
-import type { CalculationResult } from '@/types';
-import { useTurkishNumberFormat } from '@/hooks/useTurkishNumberFormat';
-import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon';
+import type { CalculationResult } from '../types';
+import { useTurkishNumberFormat } from '../hooks/useTurkishNumberFormat';
+import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
+
+interface ResultRowProps {
+    label: string;
+    value: string;
+    isTotal?: boolean;
+}
+
+const ResultRow: React.FC<ResultRowProps> = ({ label, value, isTotal = false }) => (
+    <div className="flex justify-between items-center bg-slate-900/30 p-3 rounded-md">
+        <span className={`${isTotal ? 'font-bold text-sky-400' : 'text-slate-400'}`}>{label}</span>
+        <span className={`${isTotal ? 'font-bold text-xl text-white' : 'font-medium text-slate-200'}`}>{value}</span>
+    </div>
+);
 
 interface TaxCalculatorProps {
   onBack: () => void;
@@ -39,7 +52,6 @@ const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onBack }) => {
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Sadece rakam, virgül ve noktaya izin ver
     const sanitizedValue = value.replace(/[^0-9,.]/g, '');
     setTotalAmount(sanitizedValue);
   };
@@ -99,18 +111,5 @@ const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onBack }) => {
     </div>
   );
 };
-
-interface ResultRowProps {
-    label: string;
-    value: string;
-    isTotal?: boolean;
-}
-
-const ResultRow: React.FC<ResultRowProps> = ({ label, value, isTotal = false }) => (
-    <div className="flex justify-between items-center bg-slate-900/30 p-3 rounded-md">
-        <span className={`${isTotal ? 'font-bold text-sky-400' : 'text-slate-400'}`}>{label}</span>
-        <span className={`${isTotal ? 'font-bold text-xl text-white' : 'font-medium text-slate-200'}`}>{value}</span>
-    </div>
-);
 
 export default TaxCalculator;

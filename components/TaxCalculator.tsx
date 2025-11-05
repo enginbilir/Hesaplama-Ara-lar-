@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import type { CalculationResult } from '@/types';
-import { useTurkishNumberFormat } from '@/hooks/useTurkishNumberFormat';
-import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon';
+import type { CalculationResult } from '../types';
+import { useTurkishNumberFormat } from '../hooks/useTurkishNumberFormat';
+import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 
 interface TaxCalculatorProps {
   onBack: () => void;
