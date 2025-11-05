@@ -1,0 +1,5 @@
+{
+  "name": "Mobil Hesaplama Uygulaması",
+  "description": "Toplam tutar içinden ÖTV ve KDV gibi çeşitli vergileri ayırmak ve diğer finansal hesaplamaları yapmak için bir mobil uygulama.",
+  "requestFramePermissions": []
+}
