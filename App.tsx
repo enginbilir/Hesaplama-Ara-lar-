@@ -1,13 +1,14 @@
-
 import React, { useState } from 'react';
-import MainMenu from './components/MainMenu';
-import TaxCalculator from './components/TaxCalculator';
-import PolicyPeriodCalculator from './components/PolicyPeriodCalculator';
+import MainMenu from '@/components/MainMenu';
+import TaxCalculator from '@/components/TaxCalculator';
+import PolicyPeriodCalculator from '@/components/PolicyPeriodCalculator';
+import AiSummarizer from '@/components/AiSummarizer';
 
 export enum Screen {
   MainMenu,
   TaxCalculator,
   PolicyPeriodCalculator,
+  AiSummarizer,
 }
 
 const App: React.FC = () => {
@@ -19,12 +20,15 @@ const App: React.FC = () => {
         return <TaxCalculator onBack={() => setActiveScreen(Screen.MainMenu)} />;
       case Screen.PolicyPeriodCalculator:
         return <PolicyPeriodCalculator onBack={() => setActiveScreen(Screen.MainMenu)} />;
+      case Screen.AiSummarizer:
+        return <AiSummarizer onBack={() => setActiveScreen(Screen.MainMenu)} />;
       case Screen.MainMenu:
       default:
         return (
           <MainMenu 
             onSelectCalculator={() => setActiveScreen(Screen.TaxCalculator)}
             onSelectPolicyCalculator={() => setActiveScreen(Screen.PolicyPeriodCalculator)}
+            onSelectAiSummarizer={() => setActiveScreen(Screen.AiSummarizer)}
           />
         );
     }

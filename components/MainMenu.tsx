@@ -1,10 +1,11 @@
-
 import React from 'react';
-import { CalendarIcon } from './icons/CalendarIcon';
+import { CalendarIcon } from '@/components/icons/CalendarIcon';
+import { SparklesIcon } from '@/components/icons/SparklesIcon';
 
 interface MainMenuProps {
   onSelectCalculator: () => void;
   onSelectPolicyCalculator: () => void;
+  onSelectAiSummarizer: () => void;
 }
 
 const CalculatorIcon = () => (
@@ -13,7 +14,7 @@ const CalculatorIcon = () => (
     </svg>
 );
 
-const MainMenu: React.FC<MainMenuProps> = ({ onSelectCalculator, onSelectPolicyCalculator }) => {
+const MainMenu: React.FC<MainMenuProps> = ({ onSelectCalculator, onSelectPolicyCalculator, onSelectAiSummarizer }) => {
   return (
     <div className="flex flex-col items-center p-4">
       <h1 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-2 text-center">Hesaplama Araçları</h1>
@@ -41,6 +42,18 @@ const MainMenu: React.FC<MainMenuProps> = ({ onSelectCalculator, onSelectPolicyC
           <div className="text-left">
             <h2 className="text-lg font-semibold text-slate-100">Poliçe Dönem Hesaplayıcı</h2>
             <p className="text-slate-400 text-sm">Tarih aralığına göre tutarı çeyreklere dağıtır.</p>
+          </div>
+        </button>
+        
+        <button
+          onClick={onSelectAiSummarizer}
+          className="w-full bg-slate-800 border border-slate-700 hover:bg-slate-700/50 p-6 rounded-lg shadow-lg flex items-center space-x-4 transition-all duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50"
+          aria-label="AI Metin Özetleyici"
+        >
+          <SparklesIcon />
+          <div className="text-left">
+            <h2 className="text-lg font-semibold text-slate-100">AI Metin Özetleyici</h2>
+            <p className="text-slate-400 text-sm">Uzun metinleri Gemini AI ile özetleyin.</p>
           </div>
         </button>
       </div>
