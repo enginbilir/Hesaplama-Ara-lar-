@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import type { CalculationResult } from '../types';
 import { useTurkishNumberFormat } from '../hooks/useTurkishNumberFormat';
@@ -61,7 +60,7 @@ const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onBack }) => {
       <form onSubmit={handleCalculate} className="space-y-6">
         <div>
           <label htmlFor="totalAmount" className="block text-sm font-medium text-slate-400 mb-2">
-            Toplam Tutar (TL)
+            Toplam Tutar (₺)
           </label>
           <div className="relative">
             <input
@@ -89,11 +88,11 @@ const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onBack }) => {
         <div className="mt-8 pt-6 border-t border-slate-700 animate-fade-in">
           <h2 className="text-lg font-semibold text-slate-200 mb-4">Hesaplama Sonuçları</h2>
           <div className="space-y-3 text-slate-300">
-            <ResultRow label="Mal Bedeli" value={formatTurkish(results.basePrice) + ' TL'} />
-            <ResultRow label="ÖTV Tutarı (%10)" value={formatTurkish(results.sct) + ' TL'} />
-            <ResultRow label="KDV Tutarı (%10)" value={formatTurkish(results.vat) + ' TL'} />
+            <ResultRow label="Mal Bedeli" value={formatTurkish(results.basePrice) + '₺'} />
+            <ResultRow label="ÖTV Tutarı (%10)" value={formatTurkish(results.sct) + '₺'} />
+            <ResultRow label="KDV Tutarı (%10)" value={formatTurkish(results.vat) + '₺'} />
             <hr className="border-slate-700 my-3" />
-            <ResultRow label="Kontrol Toplamı" value={formatTurkish(results.verificationTotal) + ' TL'} isTotal={true} />
+            <ResultRow label="Kontrol Toplamı" value={formatTurkish(results.verificationTotal) + '₺'} isTotal={true} />
           </div>
         </div>
       )}
