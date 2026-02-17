@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import type { CalculationResult } from '../types';
 import { useTurkishNumberFormat } from '../hooks/useTurkishNumberFormat';
@@ -36,12 +37,19 @@ const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onBack }) => {
       verificationTotal,
     });
   };
+
+  const handleClear = () => {
+    setTotalAmount('');
+    setResults(null);
+  };
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     // Sadece rakam, virgül ve noktaya izin ver
     const sanitizedValue = value.replace(/[^0-9,.]/g, '');
     setTotalAmount(sanitizedValue);
+    // Tutar değiştiğinde eski sonuçları gizlemek kafa karışıklığını önler
+    if (results) setResults(null);
   };
 
   return (
@@ -75,13 +83,25 @@ const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onBack }) => {
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-sky-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-sky-500 transition-colors transform active:scale-95 disabled:bg-slate-600 disabled:cursor-not-allowed"
-          disabled={!totalAmount}
-        >
-          Hesapla
-        </button>
+        <div className="flex gap-3">
+          <button
+            type="submit"
+            className="flex-1 bg-sky-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-sky-500 transition-colors transform active:scale-95 disabled:bg-slate-600 disabled:cursor-not-allowed"
+            disabled={!totalAmount}
+          >
+            Hesapla
+          </button>
+          
+          {(results || totalAmount) && (
+            <button
+              type="button"
+              onClick={handleClear}
+              className="px-6 bg-slate-700 text-slate-200 font-semibold py-3 rounded-lg hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-slate-500 transition-colors transform active:scale-95"
+            >
+              Temizle
+            </button>
+          )}
+        </div>
       </form>
 
       {results && (
